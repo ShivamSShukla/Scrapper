@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings - HyperScraper Pro</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <h1>⚙️ HyperScraper Pro Settings</h1>
+        <p class="subtitle">Configure your scraping experience</p>
+      </div>
+      <div class="version">v1.0.0</div>
+    </header>
+
+    <div class="content">
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar">
+        <ul class="nav-menu">
+          <li><a href="#general" class="nav-item active" data-section="general">🌐 General</a></li>
+          <li><a href="#performance" class="nav-item" data-section="performance">⚡ Performance</a></li>
+          <li><a href="#export" class="nav-item" data-section="export">💾 Export</a></li>
+          <li><a href="#appearance" class="nav-item" data-section="appearance">🎨 Appearance</a></li>
+          <li><a href="#privacy" class="nav-item" data-section="privacy">🔒 Privacy</a></li>
+          <li><a href="#advanced" class="nav-item" data-section="advanced">🔧 Advanced</a></li>
+          <li><a href="#about" class="nav-item" data-section="about">ℹ️ About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- General Settings -->
+        <section id="general" class="settings-section active">
+          <h2>🌐 General Settings</h2>
+          
+          <div class="setting-group">
+            <h3>Default Behavior</h3>
+            
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="auto-detect-mode" checked>
+                <span class="setting-text">
+                  <strong>Auto-detect mode by default</strong>
+                  <small>Always start with smart auto-detection enabled</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="include-images" checked>
+                <span class="setting-text">
+                  <strong>Include images by default</strong>
+                  <small>Extract image URLs when available</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="auto-save-data" checked>
+                <span class="setting-text">
+                  <strong>Auto-save scraped data</strong>
+                  <small>Automatically save data to local storage</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>Notifications</h3>
+            
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="show-notifications" checked>
+                <span class="setting-text">
+                  <strong>Show success notifications</strong>
+                  <small>Show toast notifications when scraping completes</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="show-errors" checked>
+                <span class="setting-text">
+                  <strong>Show error notifications</strong>
+                  <small>Show error messages when scraping fails</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>Keyboard Shortcuts</h3>
+            
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Open Extension</strong>
+                <small>Ctrl+Shift+S (Windows/Linux) or Cmd+Shift+S (Mac)</small>
+              </div>
+              <a href="chrome://extensions/shortcuts" class="edit-link" target="_blank">Edit</a>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Toggle Element Picker</strong>
+                <small>Ctrl+Shift+E (Windows/Linux) or Cmd+Shift+E (Mac)</small>
+              </div>
+              <a href="chrome://extensions/shortcuts" class="edit-link" target="_blank">Edit</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Performance Settings -->
+        <section id="performance" class="settings-section">
+          <h2>⚡ Performance Settings</h2>
+          
+          <div class="setting-group">
+            <h3>Scraping Performance</h3>
+            
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Max Concurrent Workers</strong>
+                <small>Number of parallel processing threads (more = faster but uses more CPU)</small>
+              </div>
+              <div class="setting-control">
+                <input type="range" id="worker-count" min="1" max="8" value="4">
+                <span id="worker-count-value">4</span>
+              </div>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Cache Duration</strong>
+                <small>How long to cache scraped data before re-scraping</small>
+              </div>
+              <div class="setting-control">
+                <select id="cache-duration">
+                  <option value="0">No caching</option>
+                  <option value="300000" selected>5 minutes</option>
+                  <option value="1800000">30 minutes</option>
+                  <option value="3600000">1 hour</option>
+                  <option value="86400000">1 day</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Max Rows per Scrape</strong>
+                <small>Maximum number of rows to extract in one operation</small>
+              </div>
+              <div class="setting-control">
+                <input type="number" id="max-rows" min="100" max="100000" value="10000" step="100">
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>Memory Management</h3>
+            
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="enable-cache" checked>
+                <span class="setting-text">
+                  <strong>Enable DOM caching</strong>
+                  <small>Cache DOM elements for faster repeated scraping</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="cleanup-memory" checked>
+                <span class="setting-text">
+                  <strong>Auto-cleanup memory</strong>
+                  <small>Automatically clear memory after large operations</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Max Memory Usage</strong>
+                <small>Maximum memory (MB) to use before cleanup</small>
+              </div>
+              <div class="setting-control">
+                <input type="range" id="max-memory" min="100" max="2000" value="500">
+                <span id="max-memory-value">500 MB</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Export Settings -->
+        <section id="export" class="settings-section">
+          <h2>💾 Export Settings</h2>
+          
+          <div class="setting-group">
+            <h3>Default Export Format</h3>
+            
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Preferred Format</strong>
+                <small>Default format when clicking export</small>
+              </div>
+              <div class="setting-control">
+                <select id="default-format">
+                  <option value="csv">CSV</option>
+                  <option value="excel" selected>Excel</option>
+                  <option value="json">JSON</option>
+                  <option value="xml">XML</option>
+                  <option value="sql">SQL</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>CSV Settings</h3>
+            
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Delimiter</strong>
+                <small>Character used to separate values</small>
+              </div>
+              <div class="setting-control">
+                <select id="csv-delimiter">
+                  <option value="," selected>Comma (,)</option>
+                  <option value=";">Semicolon (;)</option>
+                  <option value="\t">Tab</option>
+                  <option value="|">Pipe (|)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="csv-bom" checked>
+                <span class="setting-text">
+                  <strong>Include BOM (Byte Order Mark)</strong>
+                  <small>Helps with UTF-8 encoding in Excel</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="csv-headers" checked>
+                <span class="setting-text">
+                  <strong>Include column headers</strong>
+                  <small>Include header row in CSV files</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>File Naming</h3>
+            
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Filename Template</strong>
+                <small>Pattern for exported filenames</small>
+              </div>
+              <div class="setting-control">
+                <input type="text" id="filename-template" value="scraped-data-{date}" placeholder="scraped-data-{date}">
+                <small class="hint">Available variables: {date}, {time}, {domain}, {timestamp}</small>
+              </div>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="ask-filename" checked>
+                <span class="setting-text">
+                  <strong>Ask for filename before export</strong>
+                  <small>Show save dialog with suggested filename</small>
+                </span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- Appearance Settings -->
+        <section id="appearance" class="settings-section">
+          <h2>🎨 Appearance Settings</h2>
+          
+          <div class="setting-group">
+            <h3>Theme</h3>
+            
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Theme Mode</strong>
+                <small>Choose your preferred theme</small>
+              </div>
+              <div class="setting-control">
+                <select id="theme-mode">
+                  <option value="system">System Default</option>
+                  <option value="light" selected>Light</option>
+                  <option value="dark">Dark</option>
+                  <option value="auto">Auto (based on time)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Accent Color</strong>
+                <small>Primary color for the interface</small>
+              </div>
+              <div class="setting-control">
+                <input type="color" id="accent-color" value="#667eea">
+                <div class="color-presets">
+                  <button class="color-preset" data-color="#667eea" style="background: #667eea;"></button>
+                  <button class="color-preset" data-color="#48bb78" style="background: #48bb78;"></button>
+                  <button class="color-preset" data-color="#ed8936" style="background: #ed8936;"></button>
+                  <button class="color-preset" data-color="#ed64a6" style="background: #ed64a6;"></button>
+                  <button class="color-preset" data-color="#9f7aea" style="background: #9f7aea;"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>Popup & Sidebar</h3>
+            
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Popup Width</strong>
+                <small>Width of the popup window</small>
+              </div>
+              <div class="setting-control">
+                <select id="popup-width">
+                  <option value="400">Small (400px)</option>
+                  <option value="500" selected>Medium (500px)</option>
+                  <option value="600">Large (600px)</option>
+                  <option value="auto">Auto (fit content)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Sidebar Height</strong>
+                <small>Height of the sidebar panel</small>
+              </div>
+              <div class="setting-control">
+                <select id="sidebar-height">
+                  <option value="600">Small (600px)</option>
+                  <option value="700" selected>Medium (700px)</option>
+                  <option value="800">Large (800px)</option>
+                  <option value="auto">Auto (fit content)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="compact-mode">
+                <span class="setting-text">
+                  <strong>Compact Mode</strong>
+                  <small>Use more compact UI elements</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>Data Table</h3>
+            
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Rows per Page</strong>
+                <small>Number of rows to show per page in data table</small>
+              </div>
+              <div class="setting-control">
+                <select id="rows-per-page">
+                  <option value="25">25 rows</option>
+                  <option value="50" selected>50 rows</option>
+                  <option value="100">100 rows</option>
+                  <option value="250">250 rows</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="alternate-rows" checked>
+                <span class="setting-text">
+                  <strong>Alternate row colors</strong>
+                  <small>Use different background colors for odd/even rows</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="show-row-numbers" checked>
+                <span class="setting-text">
+                  <strong>Show row numbers</strong>
+                  <small>Display row numbers in data table</small>
+                </span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- Privacy Settings -->
+        <section id="privacy" class="settings-section">
+          <h2>🔒 Privacy Settings</h2>
+          
+          <div class="setting-group">
+            <h3>Data Storage</h3>
+            
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="store-data-locally" checked>
+                <span class="setting-text">
+                  <strong>Store scraped data locally</strong>
+                  <small>Keep scraped data in browser storage</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Auto-delete data after</strong>
+                <small>Automatically remove old scraped data</small>
+              </div>
+              <div class="setting-control">
+                <select id="auto-delete-data">
+                  <option value="0">Never</option>
+                  <option value="86400000">1 day</option>
+                  <option value="604800000" selected>1 week</option>
+                  <option value="2592000000">1 month</option>
+                  <option value="7776000000">3 months</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>Analytics & Telemetry</h3>
+            
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="send-analytics" checked>
+                <span class="setting-text">
+                  <strong>Send anonymous usage statistics</strong>
+                  <small>Help improve the extension (no personal data collected)</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="send-error-reports" checked>
+                <span class="setting-text">
+                  <strong>Send error reports</strong>
+                  <small>Automatically send error reports to help fix bugs</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>Permissions</h3>
+            
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Website Access</strong>
+                <small>Control which websites the extension can access</small>
+              </div>
+              <div class="setting-control">
+                <select id="website-access">
+                  <option value="all" selected>All websites</option>
+                  <option value="current">Current website only</option>
+                  <option value="custom">Custom list</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Clear All Data</strong>
+                <small>Remove all stored data and reset to defaults</small>
+              </div>
+              <div class="setting-control">
+                <button id="clear-all-data" class="danger-button">Clear All Data</button>
+                <small class="hint">This action cannot be undone</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Advanced Settings -->
+        <section id="advanced" class="settings-section">
+          <h2>🔧 Advanced Settings</h2>
+          
+          <div class="setting-group">
+            <h3>Developer Options</h3>
+            
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="debug-mode">
+                <span class="setting-text">
+                  <strong>Enable Debug Mode</strong>
+                  <small>Show detailed logging in console</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="setting">
+              <label class="setting-label">
+                <input type="checkbox" id="experimental-features">
+                <span class="setting-text">
+                  <strong>Enable Experimental Features</strong>
+                  <small>Try out new, unstable features</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Log Level</strong>
+                <small>Amount of detail in logs</small>
+              </div>
+              <div class="setting-control">
+                <select id="log-level">
+                  <option value="error">Error only</option>
+                  <option value="warn" selected>Warnings</option>
+                  <option value="info">Info</option>
+                  <option value="debug">Debug (verbose)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>Network Settings</h3>
+            
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Request Timeout</strong>
+                <small>Maximum time to wait for page load (seconds)</small>
+              </div>
+              <div class="setting-control">
+                <input type="number" id="request-timeout" min="5" max="120" value="30">
+              </div>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Retry Attempts</strong>
+                <small>Number of retries for failed requests</small>
+              </div>
+              <div class="setting-control">
+                <input type="number" id="retry-attempts" min="0" max="5" value="2">
+              </div>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Delay Between Requests</strong>
+                <small>Milliseconds to wait between batch requests</small>
+              </div>
+              <div class="setting-control">
+                <input type="number" id="request-delay" min="0" max="10000" value="1000">
+              </div>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <h3>Custom Scripts</h3>
+            
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Custom CSS</strong>
+                <small>Custom CSS to inject into scraped pages</small>
+              </div>
+              <div class="setting-control">
+                <textarea id="custom-css" placeholder="/* Your custom CSS here */" rows="4"></textarea>
+              </div>
+            </div>
+
+            <div class="setting">
+              <div class="setting-text">
+                <strong>Custom JavaScript</strong>
+                <small>Custom JavaScript to run before scraping</small>
+              </div>
+              <div class="setting-control">
+                <textarea id="custom-js" placeholder="// Your custom JavaScript here" rows="4"></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="settings-section">
+          <h2>ℹ️ About HyperScraper Pro</h2>
+          
+          <div class="about-content">
+            <div class="about-header">
+              <div class="logo-large">🚀</div>
+              <div class="about-info">
+                <h3>HyperScraper Pro v1.0.0</h3>
+                <p>The Ultimate Web Scraping Chrome Extension</p>
+              </div>
+            </div>
+
+            <div class="about-section">
+              <h4>Description</h4>
+              <p>HyperScraper Pro is a powerful Chrome extension that enables lightning-fast web scraping with intelligent detection algorithms. Extract tables, lists, products, and custom data from any website in milliseconds.</p>
+            </div>
+
+            <div class="about-section">
+              <h4>Features</h4>
+              <ul class="features-list">
+                <li>✅ Smart auto-detection of data structures</li>
+                <li>✅ Sub-100ms extraction performance</li>
+                <li>✅ Multiple export formats (CSV, Excel, JSON, etc.)</li>
+                <li>✅ Visual element picker</li>
+                <li>✅ Batch processing</li>
+                <li>✅ Custom selector support</li>
+                <li>✅ Data transformation tools</li>
+                <li>✅ Privacy-focused (all processing local)</li>
+              </ul>
+            </div>
+
+            <div class="about-section">
+              <h4>Links</h4>
+              <div class="links">
+                <a href="https://github.com/yourusername/hyper-scraper-pro" target="_blank" class="link-button">
+                  <span>📂 GitHub Repository</span>
+                </a>
+                <a href="https://github.com/yourusername/hyper-scraper-pro/issues" target="_blank" class="link-button">
+                  <span>🐛 Report a Bug</span>
+                </a>
+                <a href="https://github.com/yourusername/hyper-scraper-pro/discussions" target="_blank" class="link-button">
+                  <span>💬 Discussion Forum</span>
+                </a>
+                <a href="#" id="export-settings" class="link-button">
+                  <span>💾 Export Settings</span>
+                </a>
+                <a href="#" id="import-settings" class="link-button">
+                  <span>📥 Import Settings</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="about-section">
+              <h4>Credits</h4>
+              <p>Developed with ❤️ by the HyperScraper Team</p>
+              <p>MIT License • Copyright © 2024</p>
+            </div>
+
+            <div class="about-section">
+              <h4>Version Info</h4>
+              <table class="version-table">
+                <tr>
+                  <td>Extension Version:</td>
+                  <td><strong>1.0.0</strong></td>
+                </tr>
+                <tr>
+                  <td>Chrome Version:</td>
+                  <td><span id="chrome-version">Loading...</span></td>
+                </tr>
+                <tr>
+                  <td>Manifest Version:</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>Storage Used:</td>
+                  <td><span id="storage-used">Calculating...</span></td>
+                </tr>
+                <tr>
+                  <td>Last Updated:</td>
+                  <td><span id="last-updated">Loading...</span></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer Actions -->
+        <div class="footer-actions">
+          <button id="reset-defaults" class="secondary-button">Reset to Defaults</button>
+          <div class="spacer"></div>
+          <button id="save-settings" class="primary-button">Save Settings</button>
+          <button id="cancel-changes" class="secondary-button">Cancel</button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Import Settings Dialog -->
+  <div id="import-dialog" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>📥 Import Settings</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Import settings from a JSON file. This will overwrite your current settings.</p>
+        <input type="file" id="import-file" accept=".json" class="file-input">
+        <div class="modal-actions">
+          <button id="cancel-import" class="secondary-button">Cancel</button>
+          <button id="confirm-import" class="primary-button" disabled>Import</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clear Data Confirmation -->
+  <div id="clear-data-dialog" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>⚠️ Clear All Data</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to clear all data? This will:</p>
+        <ul class="warning-list">
+          <li>Delete all scraped data</li>
+          <li>Remove all saved selectors</li>
+          <li>Reset all settings to defaults</li>
+          <li>Clear cache and temporary files</li>
+        </ul>
+        <p><strong>This action cannot be undone!</strong></p>
+        <div class="modal-actions">
+          <button id="cancel-clear" class="secondary-button">Cancel</button>
+          <button id="confirm-clear" class="danger-button">Clear All Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
